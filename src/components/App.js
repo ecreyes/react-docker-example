@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //pages
 import RegisterPage from '../pages/RegisterPage';
+import LoginPage from '../pages/LoginPage';
 
 class App extends React.Component{
   render(){
@@ -10,7 +11,8 @@ class App extends React.Component{
       <Router>
         <Switch>
             <Route exact path="/register" component={RegisterPage} />
-						<Route  path="/" component={RegisterPage} />
+            <Route exact path="/login" component={LoginPage} />
+						<Route  path="/" component={LoginPage} />
         </Switch>
       </Router>
     );
