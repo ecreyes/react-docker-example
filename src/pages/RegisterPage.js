@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 //styles and icons
 import '../css/animate.css';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -18,59 +18,46 @@ const registerStyle = {
   formCard:{ backgroundColor: "#70C1B3", padding: 20, borderRadius: 15, paddingTop: 40 }
 }
 
-class RegisterPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      email: "",
-      password: "",
-      passwordrepeat: ""
-    };
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.handlePasswordRepeatChange = this.handlePasswordRepeatChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+function RegisterPage() {
+  const [name,setName] = useState("");
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
+  const [passwordrepeat,setPasswordRepeat] = useState("");
+
+  function handleNameChange(e) {
+    setName(e.target.value);
   }
 
-  handleNameChange(e) {
-    this.setState({
-      name: e.target.value
-    });
+  function handleEmailChange(e) {
+    setEmail(e.target.value);
   }
 
-  handleEmailChange(e) {
-    this.setState({
-      email: e.target.value
-    });
+  function handlePasswordChange(e) {
+    setPassword(e.target.value);
   }
 
-  handlePasswordChange(e) {
-    this.setState({
-      password: e.target.value
-    });
+  function handlePasswordRepeatChange(e) {
+    setPasswordRepeat(e.target.value);
   }
 
-  handlePasswordRepeatChange(e) {
-    this.setState({
-      passwordrepeat: e.target.value
-    });
-  }
-
-  handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
+    let state = {
+      name,
+      email,
+      password,
+      passwordrepeat
+    }
+    console.log(state);
   }
 
-  render() {
     return (
       <div className="jumbotron d-flex align-items-center vh-100" style={registerStyle.containerBackground}>
         <div className="container" style={{ marginTop: 50 }} >
           <div className="row d-flex justify-content-center">
             <div className="col-12 col-md-4 animated fadeIn" style={registerStyle.formCard}>
               <h2 className="d-flex align-items-center flex-column" style={registerStyle.myLabelColor}>Sign up now!</h2>
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={handleSubmit}>
                 <div className="d-flex justify-content-center">
                   <div style={registerStyle.divMiddlePosition}>
                     <img src={userAvatar} alt="icon user sign up" width="100" height="100" />
@@ -80,8 +67,8 @@ class RegisterPage extends React.Component {
                   <label htmlFor="name" style={registerStyle.myLabelColor}>Name</label>
                   <input
                     className="form-control"
-                    onChange={this.handleNameChange}
-                    value={this.state.name}
+                    onChange={handleNameChange}
+                    value={name}
                     type="text"
                     id="name" />
                 </div>
@@ -89,8 +76,8 @@ class RegisterPage extends React.Component {
                   <label htmlFor="email" style={registerStyle.myLabelColor}>Email</label>
                   <input
                     className="form-control"
-                    onChange={this.handleEmailChange}
-                    value={this.state.email}
+                    onChange={handleEmailChange}
+                    value={email}
                     type="email"
                     id="email" />
                 </div>
@@ -98,8 +85,8 @@ class RegisterPage extends React.Component {
                   <label htmlFor="password" style={registerStyle.myLabelColor}>Password</label>
                   <input
                     className="form-control"
-                    onChange={this.handlePasswordChange}
-                    value={this.state.password}
+                    onChange={handlePasswordChange}
+                    value={password}
                     type="password"
                     id="password" />
                 </div>
@@ -107,8 +94,8 @@ class RegisterPage extends React.Component {
                   <label htmlFor="passwordrepeat" style={registerStyle.myLabelColor}>Password Repeat</label>
                   <input
                     className="form-control"
-                    onChange={this.handlePasswordRepeatChange}
-                    value={this.state.passwordrepeat}
+                    onChange={handlePasswordRepeatChange}
+                    value={passwordrepeat}
                     type="password"
                     id="passwordrepeat" />
                 </div>
@@ -119,7 +106,6 @@ class RegisterPage extends React.Component {
         </div>
       </div>
     )
-  }
 }
 
 export default RegisterPage;
