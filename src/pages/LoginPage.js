@@ -33,7 +33,7 @@ function LoginPage() {
 
   return (
     <BodyFullScreen>
-      <CardSession onSubmit={onSubmit} title="Login in!" send="Login">
+      <CardSession onSubmit={onSubmit} title="Log in!" send="Login">
         <div className="form-group">
           <label htmlFor="email" style={myStyle.myLabelColor}>Email</label>
           <input
