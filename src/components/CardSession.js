@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import userAvatar from '../images/user.png';
 import '../css/animate.css';
 
@@ -16,7 +18,7 @@ function CardSession(props) {
     <div className="container" style={{ marginTop: 50 }}>
       <div className="row d-flex justify-content-center">
         <div className="col-12 col-md-4 animated fadeIn" style={myStyle.formCard}>
-          <h2 className="d-flex align-items-center flex-column" style={myStyle.myLabelColor}>{props.title}</h2>
+          <h2 className="d-flex align-items-center flex-column animated slideInUp" style={myStyle.myLabelColor}>{props.title}</h2>
           <form onSubmit={props.onSubmit}>
             <div className="d-flex justify-content-center">
               <div style={myStyle.divMiddlePosition}>
@@ -26,6 +28,9 @@ function CardSession(props) {
             {props.children}
             <input type="submit" className="btn btn-block" style={myStyle.submitButton} value={props.send} />
           </form>
+          <div className="d-flex justify-content-center">
+            <Link style={{ color: "white",marginTop:10 }} to={props.route}>{props.routeText}</Link>
+          </div>
         </div>
       </div>
     </div>

@@ -51,7 +51,10 @@ function RegisterPage() {
 
   return (
     <BodyFullScreen>
-      <CardSession onSubmit={onSubmit} title="Sign up!" send="Sign up">
+      <CardSession onSubmit={onSubmit}
+         title="Sign up!"
+          send="Sign up"
+          route="/login" routeText="if you have an account, Sign in!">
         <div className="form-group">
           <label htmlFor="name" style={myStyle.myLabelColor}>Name</label>
           <input
